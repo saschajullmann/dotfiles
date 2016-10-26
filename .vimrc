@@ -66,6 +66,8 @@ Bundle 'YankRing.vim'
 Plugin 'pangloss/vim-javascript'
 " Support for React/JSX Syntax
 Plugin 'mxw/vim-jsx'
+" Gruvbox Colorscheme
+Plugin 'morhetz/gruvbox'
 
 " ============================================================================
 " Install plugins the first time vim runs
@@ -90,13 +92,19 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" setting the colorscheme
+set t_Co=256
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark="hard"
+colorscheme gruvbox
+
 " tab length exceptions on some file types
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " always show status bar
-set ls=2
+set laststatus=2
 
 " incremental search
 set incsearch
@@ -108,6 +116,7 @@ syntax on
 
 " show line numbers
 set nu
+set cursorline
 
 " old autocomplete keyboard shortcut
 imap <C-J> <C-X><C-O>
@@ -116,12 +125,12 @@ imap <C-J> <C-X><C-O>
 ca w!! w !sudo tee "%"
 
 " use 256 colors when possible
-if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
-	let &t_Co = 256
-    colorscheme fisa
-else
-    colorscheme delek
-endif
+"if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
+"	let &t_Co = 256
+"    colorscheme gruvbox
+"else
+"    colorscheme delek
+"endif
 
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
