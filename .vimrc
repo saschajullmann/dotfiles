@@ -68,6 +68,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 " Gruvbox Colorscheme
 Plugin 'morhetz/gruvbox'
+" Dracula Colorscheme
+Plugin 'dracula/vim'
 
 " ============================================================================
 " Install plugins the first time vim runs
@@ -94,9 +96,9 @@ set shiftwidth=4
 
 " setting the colorscheme
 set t_Co=256
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="hard"
-colorscheme gruvbox
+"let g:gruvbox_italic=1
+"let g:gruvbox_contrast_dark="hard"
+color dracula
 
 " tab length exceptions on some file types
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -326,7 +328,7 @@ let g:user_emmet_settings = {
 " Airline ------------------------------
 
 let g:airline_powerline_fonts = 0
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'dracula'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 
