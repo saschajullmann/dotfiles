@@ -95,7 +95,7 @@ set shiftwidth=4
 " setting the colorscheme
 set t_Co=256
 "let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="hard"
+"let g:gruvbox_contrast_dark="hard"
 color gruvbox
 
 " tab length exceptions on some file types
