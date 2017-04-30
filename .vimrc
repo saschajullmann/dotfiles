@@ -40,8 +40,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 " Zen coding
 Bundle 'mattn/emmet-vim'
-" Git integration
-Bundle 'motemen/git-vim'
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -68,6 +66,10 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 " Gruvbox Colorscheme
 Plugin 'morhetz/gruvbox'
+" Git integration
+Plugin 'tpope/vim-fugitive'
+" Git syntax highlighting
+Plugin 'tpope/vim-git'
 
 " ============================================================================
 " Install plugins the first time vim runs
@@ -346,3 +348,6 @@ let g:airline_symbols.linenr = ''
 "
 "Inserting better -----------------------
 set pastetoggle=<F10>
+
+"Make sure webpack hot reloading works with vim ------
+set backupcopy=yes
