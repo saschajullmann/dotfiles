@@ -93,6 +93,7 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set colorcolumn=80
 
 " setting the colorscheme
 set t_Co=256
