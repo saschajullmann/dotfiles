@@ -32,12 +32,6 @@ Bundle 'gmarik/vundle'
 
 " Better file browser
 Bundle 'scrooloose/nerdtree'
-" Code commenter
-Bundle 'scrooloose/nerdcommenter'
-" Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
-" Extension to ctrlp, for fuzzy command finder
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
 " Zen coding
 Bundle 'mattn/emmet-vim'
 " Airline
@@ -103,7 +97,6 @@ color gruvbox
 
 " tab length exceptions on some file types
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " always show status bar
@@ -121,26 +114,8 @@ syntax on
 set nu
 set cursorline
 
-" old autocomplete keyboard shortcut
-imap <C-J> <C-X><C-O>
-
-" save as sudo
-ca w!! w !sudo tee "%"
-
-" use 256 colors when possible
-"if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
-"	let &t_Co = 256
-"    colorscheme gruvbox
-"else
-"    colorscheme delek
-"endif
-
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
-
-" autocompletion of files and commands behaves like shell
-" (complete only the common part, list the options that match)
-set wildmode=list:longest
 
 " better backup, swap and undos storage
 set directory=~/.vim/dirs/tmp     " directory to place swap files in
@@ -175,42 +150,6 @@ map <F3> :NERDTreeToggle<CR>
 nmap ,t :NERDTreeFind<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
-
-
-" CtrlP ------------------------------
-
-" file finder mapping
-let g:ctrlp_map = ',e'
-" tags (symbols) in current file finder mapping
-nmap ,g :CtrlPBufTag<CR>
-" tags (symbols) in all files finder mapping
-nmap ,G :CtrlPBufTagAll<CR>
-" general code finder in all files mapping
-nmap ,f :CtrlPLine<CR>
-" recent files finder mapping
-nmap ,m :CtrlPMRUFiles<CR>
-" commands finder mapping
-nmap ,c :CtrlPCmdPalette<CR>
-" to be able to call CtrlP with default search text
-function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-    execute ':CtrlP' . a:ctrlp_command_end
-    call feedkeys(a:search_text)
-endfunction
-" same as previous mappings, but calling with current word as default text
-nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
-nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
-nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
-" don't change working directory
-let g:ctrlp_working_path_mode = 0
-" ignore these files and folders on file finder
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
-  \ 'file': '\.pyc$\|\.pyo$',
-  \ }
 
 " Syntastic ------------------------------
 
