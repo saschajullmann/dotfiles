@@ -61,6 +61,10 @@ Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-fugitive'
 " Git syntax highlighting
 Plugin 'tpope/vim-git'
+" Python indentation
+Plugin 'vim-scripts/indentpython.vim'
+" Python code formatter
+Plugin 'ambv/black'
 
 " ============================================================================
 " Install plugins the first time vim runs
@@ -79,18 +83,38 @@ endif
 filetype plugin on
 filetype indent on
 
+" Show file options above the command line
+set wildmenu
+set wildmode=list:full
+
+" `gf` opens file under cursor in a new vertical split
+nnoremap gf :vertical wincmd f<CR>
+
+" open a new split on the right side of current buffer
+set splitright
+
 " tabs and spaces handling
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set colorcolumn=80
+set colorcolumn=88
 
 " setting the colorscheme
 set t_Co=256
 "let g:gruvbox_italic=1
 "let g:gruvbox_contrast_dark="hard"
 color gruvbox
+
+" better indendation for python
+au BufNewFile,BufRead *.py:
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 " tab length exceptions on some file types
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -223,6 +247,20 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " Vim-JSX ------------------------------
 let g:jsx_ext_required = 0
+
+" ALE ------------------------------
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_linters = {'python': ['flake8']}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_python_flake8_executable = 'pipenv'
+let g:ale_python_flake8_options = ''
+
+" Python black
+autocmd BufWritePre *.py execute ':Black'
 
 " Emmet VIM enable JSX for Javascript files
 let g:user_emmet_settings = {
