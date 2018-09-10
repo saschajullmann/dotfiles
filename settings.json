@@ -1,0 +1,9 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
+    "editor.fontFamily": "'Meslo', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontWeight": "bold",
+    "python.formatting.provider": "black",
+    "python.linting.flake8Enabled": true,
+    "window.menuBarVisibility": "default",
+    "editor.minimap.enabled": false
+}
