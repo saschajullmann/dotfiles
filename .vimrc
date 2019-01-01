@@ -189,6 +189,9 @@ else
   let g:ycm_python_binary_path = 'python'
 endif
 
+" Disable the auto blacklisting of JSX files for the filepath completer
+let g:ycm_filepath_blacklist = {}
+
 " Vim-JSX ------------------------------
 let g:jsx_ext_required = 0
 
