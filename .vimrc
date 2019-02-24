@@ -1,81 +1,50 @@
 " ============================================================================
-" Vundle initialization
-" Avoid modify this section, unless you are very sure of what you are doing
-
-" no vi-compatible
-set nocompatible
-
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
+" Install Vim-PLug if it does not exist
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
 
 " ============================================================================
 " Active plugins
 " You can disable or add new ones here:
 
-" Plugins from github repos:
-
+call plug#begin()
 " Better file browser
-Bundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Zen coding
-Bundle 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 " Airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Surround
-Bundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Autoclose
-Bundle 'Townk/vim-autoclose'
+Plug 'Townk/vim-autoclose'
 " Async code checker/linter
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 " Paint css colors with the real color
-Bundle 'lilydjwg/colorizer'
-" XML/HTML tags navigation
-Bundle 'matchit.zip'
-" Yank history navigation
-Bundle 'YankRing.vim'
+Plug 'lilydjwg/colorizer'
 " Javascript Syntax
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 " Support for React/JSX Syntax
-Plugin 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 " Gruvbox Colorscheme
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " Git integration
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Git syntax highlighting
-Plugin 'tpope/vim-git'
+Plug 'tpope/vim-git'
 " Python code formatter
-Plugin 'ambv/black'
+Plug 'ambv/black'
 " Autocompletion
-Plugin 'Valloric/YouCompleteMe'
-
-" ============================================================================
-" Install plugins the first time vim runs
-
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
+Plug 'Valloric/YouCompleteMe'
+" Initialize plugin system
+call plug#end()
 
 " ============================================================================
 " Vim settings and mappings
-" You can edit them as you wish
 
 " allow plugins by file type (required for plugins!)
 filetype plugin on
